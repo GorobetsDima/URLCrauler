@@ -7,17 +7,14 @@ import java.util.Set;
  */
 
 public class ThreadCreator {
-    public static void main(String[] args) {
-        ThreadCreator.startThreads();
-    }
 
     public static void startThreads (){
 
-            Thread t = new Thread(new GetDeeperUrlConnect(), "t");
+            Thread t = new Thread(new GetDeeperUrlConnect(), "mainThread");
             t.start();
 
             try {
-                t.join(5000);
+                t.wait(2000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

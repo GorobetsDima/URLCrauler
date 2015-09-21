@@ -1,10 +1,7 @@
 package parser;
 
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.Vector;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -119,7 +116,12 @@ public class HTMLLinkExtractor {
                 result.add(link);
 
             }
-            System.out.println(result.toString());
+            String[]s = new String[result.size()];
+            for (int i = 0; i <result.size() ; i++) {
+
+                s[i] = result.iterator().next();
+            }
+            System.out.println(Arrays.toString(s));
         }
         return result;
     }
