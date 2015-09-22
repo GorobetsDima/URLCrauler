@@ -34,12 +34,12 @@ class GetDeeperUrlConnect  {
             ThreadGetSetOfLinks th = new ThreadGetSetOfLinks(n, String.format("%s%s", "Thread:", link), urlAddress, dirName);
             th.start();
             try {
-                th.join(500);
+                th.join(100);
             } catch (InterruptedException e) {
                 System.out.println("Thread" + th + "was interrupted");
 
             }
-//            writeToDiffFiles(n - 1, urlAddress, fileName);
+//            writeToDiffFiles(n - 1, urlAddress, dirName);
         }
     }
 }

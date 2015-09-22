@@ -23,14 +23,16 @@ public class ThreadGetSetOfLinks extends Thread {
     @Override
     public void run() {
         try {
-            System.out.println("Thread started:::" + Thread.currentThread().getName());
-            Set<String> links = GetDeeperUrlConnect.getSetOfLinks(urlAddress, dirName);
-            for (String link : links) {
-                urlAddress = link;
+//            synchronized () {
+                System.out.println("Thread started:::" + Thread.currentThread().getName());
+                Set<String> links = GetDeeperUrlConnect.getSetOfLinks(urlAddress, dirName);
+                for (String link : links) {
+                    urlAddress = link;
 //            dirName = dirName + link+ ".html";
-                GetDeeperUrlConnect.writeToDiffFiles(n - 1, urlAddress, dirName);// рекурсивно вызываю метод поиска новых ссылок
+                    GetDeeperUrlConnect.writeToDiffFiles(n - 1, urlAddress, dirName);// рекурсивно вызываю метод поиска новых ссылок
+//                }
             }
-            Thread.sleep(1000);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

@@ -29,7 +29,7 @@ public class HTMLLinkExtractor {
      * @param htmlToString string content for validation
      * @return Set htmlToString
      */
-    public Set <String> parseStringBuilder( String htmlToString) {
+    public synchronized Set <String> parseStringBuilder( String htmlToString) {
 //        htmlToString= GetURLContent.writeToFile(GetURLContent.urlAddress, GetURLContent.fileName);
 
         Set<String> result = new HashSet<>();
