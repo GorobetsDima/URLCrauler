@@ -10,24 +10,31 @@ import java.util.Set;
  */
 public class ThreadGetSetOfLinks extends Thread {
     String urlAddress;
-    String fileName;
+    String dirName;
     int n;
 
-    public ThreadGetSetOfLinks(int n, String name, String urlAddress, String fileName) {
+    public ThreadGetSetOfLinks(int n, String name, String urlAddress, String dirName) {
         super(name);
         this.urlAddress = urlAddress;
-        this.fileName = fileName;
+        this.dirName = dirName;
         this.n = n;
     }
 
     @Override
     public void run() {
-
-        Set<String> links = GetDeeperUrlConnect.getSetOfLinks(urlAddress, fileName);
-        urlAddress = links.iterator().next();
-        fileName = "C:\\Users\\Вика\\IdeaProjects\\URLParser\\URLParser\\html.files\\" + links.iterator().next() + ".html";
-        GetDeeperUrlConnect.writeToDiffFiles(n - 1, urlAddress, fileName);
+        try {
+            System.out.println("Thread started:::" + Thread.currentThread().getName());
+            Set<String> links = GetDeeperUrlConnect.getSetOfLinks(urlAddress, dirName);
+            for (String link : links) {
+                urlAddress = link;
+//            dirName = dirName + link+ ".html";
+                GetDeeperUrlConnect.writeToDiffFiles(n - 1, urlAddress, dirName);// рекурсивно вызываю метод поиска новых ссылок
+            }
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Thread ended:::" + Thread.currentThread().getName());
 
     }
-
 }

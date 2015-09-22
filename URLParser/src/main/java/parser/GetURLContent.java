@@ -15,22 +15,14 @@ import java.net.URLConnection;
 // used http://www.mkyong.com/java/how-to-get-url-content-in-java/
 public class GetURLContent {
     public static final Logger LOGG = Logger.getLogger(GetURLContent.class);
-
-    public static void main(String[] args) {
-        String urlAddress = "http://www.mkyong.com";
-
-        //save to this filename
-        String fileName = "C:\\Users\\Вика\\IdeaProjects\\URLParser\\URLParser\\Crauler.html";
-
-        writeToFile(urlAddress, fileName);
+    static String urlAddress = "http://www.mkyong.com";
+    static String dirName = "C:\\Users\\Вика\\IdeaProjects\\URLParser\\URLParser";
 
 
-    }
-
-    public static String writeToFile(String urlAddress, String fileName) {
+    public static String writeToFile(String urlAddress, String dirName) {
         URL url;
         StringBuilder allLinks = new StringBuilder();
-        String parsingText= null;
+        String parsingText = null;
         try {
             // get URL content
 
@@ -44,34 +36,44 @@ public class GetURLContent {
 
             String inputLine;
 
+            String dirNNN = dirName + "\\All Links" ;
+            File dirr = new File(dirNNN);
+            dirr.mkdir();
 
+            String dirN = dirNNN + "\\" + urlAddress.replaceAll("\\W", "");
+            File dir = new File(dirN);
+            dir.mkdirs();
+
+            String fileName = dirN + "\\" + urlAddress.replaceAll("\\W", "") + ".html";
             File file = new File(fileName);
-
-            if (!file.exists()) {
-                file.createNewFile();
-            }
+            file.createNewFile();
+//
+//            if (!file.exists()){
+//                file.createNewFile();
+//            }
 
             //use FileWriter to write file
-            FileWriter fw = new FileWriter(file.getAbsoluteFile());
-            BufferedWriter bw = new BufferedWriter(fw);
+//            BufferedWriter bw;
+//            try (FileWriter fw = new FileWriter(file)) {
+//                bw = new BufferedWriter(fw);
+//            }
+            FileWriter bw= new FileWriter(fileName);
             while ((inputLine = br.readLine()) != null) {
                 bw.write(inputLine);
                 allLinks.append(inputLine).append("\n");
-                //создать стрингбилдер и записать в него весть html в виде строки, потом для этой строки вызвать метод который парсит ссылки он мне
-                //выдаст вектор ссылок потом я буду в отдельном методе ходить по  этому вектору,для каждого значения вектора(ссылки) вызывать класс GetURLConnect
-                //  и присваивать каждому новому html файла имя ссылки
+
             }
 
             bw.close();
             br.close();
             LOGG.info("Done");
             parsingText = allLinks.toString();
-            System.out.println(parsingText);
+//            System.out.println(parsingText);
 
         } catch (MalformedURLException e) {
-            e.printStackTrace();
+            e.printStackTrace();//Change!!!
         } catch (IOException e) {
-            e.printStackTrace();
+            e.printStackTrace();//Change!!!
         }
         return parsingText;
     }

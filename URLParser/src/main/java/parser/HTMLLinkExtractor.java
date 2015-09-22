@@ -29,74 +29,12 @@ public class HTMLLinkExtractor {
      * @param htmlToString string content for validation
      * @return Set htmlToString
      */
-    public Set <String> parseStringBuilder(String htmlToString) {
+    public Set <String> parseStringBuilder( String htmlToString) {
+//        htmlToString= GetURLContent.writeToFile(GetURLContent.urlAddress, GetURLContent.fileName);
 
-        Set<String> result = new Set<String>() {
-            @Override
-            public int size() {
-                return 0;
-            }
+        Set<String> result = new HashSet<>();
 
-            @Override
-            public boolean isEmpty() {
-                return false;
-            }
 
-            @Override
-            public boolean contains(Object o) {
-                return false;
-            }
-
-            @Override
-            public Iterator<String> iterator() {
-                return null;
-            }
-
-            @Override
-            public Object[] toArray() {
-                return new Object[0];
-            }
-
-            @Override
-            public <T> T[] toArray(T[] a) {
-                return null;
-            }
-
-            @Override
-            public boolean add(String s) {
-                return false;
-            }
-
-            @Override
-            public boolean remove(Object o) {
-                return false;
-            }
-
-            @Override
-            public boolean containsAll(Collection<?> c) {
-                return false;
-            }
-
-            @Override
-            public boolean addAll(Collection<? extends String> c) {
-                return false;
-            }
-
-            @Override
-            public boolean retainAll(Collection<?> c) {
-                return false;
-            }
-
-            @Override
-            public boolean removeAll(Collection<?> c) {
-                return false;
-            }
-
-            @Override
-            public void clear() {
-
-            }
-        } ;
 
         matcherTag = patternTag.matcher(htmlToString);
 
@@ -104,6 +42,7 @@ public class HTMLLinkExtractor {
 
 
             String href = matcherTag.group(1); // href
+            String linkText = matcherTag.group(2); // link text
 
 
             matcherLink = patternLink.matcher(href);
@@ -112,20 +51,30 @@ public class HTMLLinkExtractor {
             while (matcherLink.find()) {
 
                 String link = matcherLink.group(1); // link
+                link = link.replaceAll("'", "");
+                link = link.replaceAll("\"", "");
+
+                if (link.startsWith("http")) {
 
                 result.add(link);
 
             }
-            String[]s = new String[result.size()];
-            for (int i = 0; i <result.size() ; i++) {
-
-                s[i] = result.iterator().next();
             }
-            System.out.println(Arrays.toString(s));
+            }
+        for (String b :result){
+            System.out.println(b);
         }
+
         return result;
-    }
+        }
+
+
+
+
+
 
 }
+
+
 
         

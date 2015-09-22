@@ -1,15 +1,15 @@
 package parser;
 
 /**
- * Created by Âèêà on 21.09.2015.
+ * Created by ï¿½ï¿½ï¿½ï¿½ on 21.09.2015.
  */
 public class CraulerRunner {
     public static void main(String[] args) {
 //        ThreadCreator.startThreads();
 
-        HTMLLinkExtractor html  = new HTMLLinkExtractor();
-        System.out.println( html.parseStringBuilder(GetURLContent.writeToFile("http://www.mkyong.com", "Crauler.html")));
+//        HTMLLinkExtractor html  = new HTMLLinkExtractor();
+//        html.parseStringBuilder(GetURLContent.writeToFile("http://www.mkyong.com", "C:\\Users\\Ð’Ð¸ÐºÐ°\\IdeaProjects\\URLParser\\URLParser"));
 
-//        GetDeeperUrlConnect.writeToDiffFiles(1,"http://www.mkyong.com","C:\\Users\\Âèêà\\IdeaProjects\\URLParser\\URLParser\\html.files\\Crauler.html");
+        GetDeeperUrlConnect.writeToDiffFiles(2,"http://www.mkyong.com", "C:\\Users\\Ð’Ð¸ÐºÐ°\\IdeaProjects\\URLParser\\URLParser");
     }
 }

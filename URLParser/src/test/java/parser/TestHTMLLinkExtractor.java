@@ -22,8 +22,8 @@ public class TestHTMLLinkExtractor {
     @DataProvider
     public Object[][] HTMLContentProvider() {
         return new Object[][] {
-                new Object[] { "abc hahaha <a href='" +"111111"+ TEST_LINK + "'>31e21google</a>" },
-                new Object[] { "abc hahaha <a HREF='" + TEST_LINK + "'>googlecdscc</a>" },
+                new Object[] { "abc hahaha <a href='" + TEST_LINK + "'>google</a>" },
+                new Object[] { "abc hahaha <a HREF='" + TEST_LINK + "'>google</a>" },
 
                 new Object[] { "abc hahaha <A HREF='" + TEST_LINK + "'>google</A> , "
                         + "abc hahaha <A HREF='" + TEST_LINK + "' target='_blank'>google</A>" },
@@ -36,20 +36,19 @@ public class TestHTMLLinkExtractor {
 
     @Test(dataProvider = "HTMLContentProvider")
     public void ValidHTMLLinkTest(String htmlToString) {
-htmlToString =GetURLContent.writeToFile("http://www.google.com","TestLinks.html");
+
         Set<String> links = htmlLinkExtractor.parseStringBuilder(htmlToString);
 
         //there must have something
         Assert.assertTrue(links.size() != 0);
 
-        for (int i = 0; i < links.size(); i++) {
-            if (links.iterator().hasNext()) {
-                String htmlLinks = links.iterator().next();
 
-                System.out.println(htmlLinks);
-                Assert.assertEquals(htmlLinks, TEST_LINK);
-            }
+           for(String link:links) {
+
+               Assert.assertEquals(link, TEST_LINK);
+           }
+
         }
 
     }
-}
+
