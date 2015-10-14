@@ -7,10 +7,9 @@ import java.io.FileReader;
 import java.io.IOException;
 
 /**
- * Created by Дарья on 17.09.2015.
+ * Created by Dmitriy Gorobets.
  */
 
-//http://www.mkyong.com/java/how-to-read-file-from-java-bufferedreader-example/
 public class HrefParser {
     public static void main(String[] args) {
 
@@ -38,5 +37,4 @@ public class HrefParser {
         return links;
     }
 
-//TODO use library http://www.mkyong.com/java/jsoup-html-parser-hello-world-examples/
 }
