@@ -30,7 +30,6 @@ public class HTMLLinkExtractor {
      * @return Set htmlToString
      */
     public synchronized Set <String> parseStringBuilder( String htmlToString) {
-//        htmlToString= GetURLContent.writeToFile(GetURLContent.urlAddress, GetURLContent.fileName);
 
         Set<String> result = new HashSet<>();
 
@@ -41,8 +40,8 @@ public class HTMLLinkExtractor {
         while (matcherTag.find()) {
 
 
-            String href = matcherTag.group(1); // href
-            String linkText = matcherTag.group(2); // link text
+            String href = matcherTag.group(1); 
+            String linkText = matcherTag.group(2);
 
 
             matcherLink = patternLink.matcher(href);
@@ -50,7 +49,7 @@ public class HTMLLinkExtractor {
 
             while (matcherLink.find()) {
 
-                String link = matcherLink.group(1); // link
+                String link = matcherLink.group(1);
                 link = link.replaceAll("'", "");
                 link = link.replaceAll("\"", "");
 
@@ -67,11 +66,6 @@ public class HTMLLinkExtractor {
 
         return result;
         }
-
-
-
-
-
 
 }
 
