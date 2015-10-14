@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Created by Вика on 20.09.2015.
+ * Created by Gorobets Dmitriy on 20.09.2015.
  */
 class GetDeeperUrlConnect  {
 
@@ -30,8 +30,7 @@ class GetDeeperUrlConnect  {
         Set<String> links = getSetOfLinks(urlAddress, dirName);
         for (String link : links) {
             urlAddress = link;
-//            String fileName = "C:\\Users\\Вика\\IdeaProjects\\URLParser\\URLParser\\html.files\\" + link + ".html";
-            ThreadGetSetOfLinks th = new ThreadGetSetOfLinks(n, String.format("%s%s", "Thread:", link), urlAddress, dirName);
+        ThreadGetSetOfLinks th = new ThreadGetSetOfLinks(n, String.format("%s%s", "Thread:", link), urlAddress, dirName);
             th.start();
             try {
                 th.join(100);
@@ -39,23 +38,9 @@ class GetDeeperUrlConnect  {
                 System.out.println("Thread" + th + "was interrupted");
 
             }
-//            writeToDiffFiles(n - 1, urlAddress, dirName);
+            writeToDiffFiles(n - 1, urlAddress, dirName);
         }
     }
 }
 
 
-//    @Override
-//    public void run() {
-//
-//
-//        System.out.println("Thread started:::" + Thread.currentThread().getName());
-//        try {
-//            writeToDiffFiles(2, this.urlAddress, this.fileName);
-//            Thread.sleep(1000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//        System.out.println("Thread ended:::" + Thread.currentThread().getName());
-//    }
-//}
