@@ -3,7 +3,7 @@ package parser;
 import java.util.Set;
 
 /**
- * Created by Дарья on 17.09.2015.
+ * Created by Dmitriy Gorobets.
  */
 
 public class ThreadCreator {
