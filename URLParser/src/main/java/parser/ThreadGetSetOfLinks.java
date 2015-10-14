@@ -6,7 +6,7 @@ import java.io.InputStream;
 import java.util.Set;
 
 /**
- * Created by Вика on 21.09.2015.
+ * Created by Dmitriy Gorobets on 21.09.2015.
  */
 public class ThreadGetSetOfLinks extends Thread {
     String urlAddress;
@@ -23,14 +23,13 @@ public class ThreadGetSetOfLinks extends Thread {
     @Override
     public void run() {
         try {
-//            synchronized () {
-                System.out.println("Thread started:::" + Thread.currentThread().getName());
+            System.out.println("Thread started:::" + Thread.currentThread().getName());
                 Set<String> links = GetDeeperUrlConnect.getSetOfLinks(urlAddress, dirName);
                 for (String link : links) {
                     urlAddress = link;
-//            dirName = dirName + link+ ".html";
+                    dirName = dirName + link+ ".html";
                     GetDeeperUrlConnect.writeToDiffFiles(n - 1, urlAddress, dirName);// рекурсивно вызываю метод поиска новых ссылок
-//                }
+
             }
             Thread.sleep(500);
         } catch (InterruptedException e) {
