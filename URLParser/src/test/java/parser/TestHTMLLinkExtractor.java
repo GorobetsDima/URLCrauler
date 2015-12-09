@@ -7,9 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-/**
- * Created by Дарья on 17.09.2015.
- */
+
 public class TestHTMLLinkExtractor {
     private HTMLLinkExtractor htmlLinkExtractor;
     String TEST_LINK = "http://www.google.com";
@@ -39,7 +37,7 @@ public class TestHTMLLinkExtractor {
 
         Set<String> links = htmlLinkExtractor.parseStringBuilder(htmlToString);
 
-        //there must have something
+        
         Assert.assertTrue(links.size() != 0);
 
 
